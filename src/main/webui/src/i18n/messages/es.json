@@ -1,0 +1,266 @@
+{
+  "acl-action": {
+    "label": "Type (action)"
+  },
+  "acl-target": {
+    "label": "Target"
+  },
+  "acls": {
+    "create": "Create Access Control List",
+    "edit": "Edit Access ControlList",
+    "label": "Access Control Lists"
+  },
+  "action": {
+    "add": "Add",
+    "cancel": "Cancel",
+    "close": "Close",
+    "load": "Load",
+    "save": "Save",
+    "search": "Search",
+    "sort": "Sort"
+  },
+  "actions": {
+    "label": "Actions"
+  },
+  "cc-manager": {
+    "label": "CC Manager"
+  },
+  "cc-operator-cold": {
+    "label": "CC Operator COLD"
+  },
+  "cc-operator-hot": {
+    "label": "CC Operator HOT"
+  },
+  "cc-operator-rejected": {
+    "label": "CC Operator REJECTED"
+  },
+  "cdr": {
+    "list": {
+      "label": "CDR List"
+    }
+  },
+  "configuration": {
+    "label": "Configuration",
+    "tooltip": "Configuration"
+  },
+  "contexts": {
+    "create": "Create Context",
+    "edit": "Edit Context",
+    "label": "Contexts"
+  },
+  "cpa-admin": {
+    "label": "CPA Administrator"
+  },
+  "cpa-advertiser": {
+    "label": "Advertiser"
+  },
+  "cpa-webmaster": {
+    "label": "Webmaster"
+  },
+  "crm-admin": {
+    "label": "CRM Administrator"
+  },
+  "crm-financier": {
+    "label": "CRM Financier"
+  },
+  "dashboard": {
+    "label": "Dashboard",
+    "tooltip": "Main Dashboard"
+  },
+  "dictionaries": {
+    "dayOfWeek": {
+      "any": "Any",
+      "fri": "Friday",
+      "mon": "Monday",
+      "sat": "Saturday",
+      "sun": "Sunday",
+      "thu": "Thursday",
+      "tue": "Tuesday",
+      "wed": "Wednesday"
+    },
+    "directions": {
+      "any": "Any",
+      "inbound": "Inbound",
+      "local": "Local",
+      "outbound": "Outbound"
+    }
+  },
+  "directory": {
+    "label": "Directory"
+  },
+  "dlv-courier": {
+    "label": "Delivery Courier"
+  },
+  "dlv-manager": {
+    "label": "Delivery Manager"
+  },
+  "domains": {
+    "create": "Create Domain",
+    "edit": "Edit Domain",
+    "label": "Domains"
+  },
+  "enums": {
+    "acl-type": {
+      "allow": "Allow",
+      "deny": "Deny"
+    },
+    "direction": {
+      "any": "Any",
+      "inbound": "Inbound",
+      "local": "Local",
+      "outbound": "Outbound"
+    }
+  },
+  "filters": {
+    "date-from": "Date from",
+    "date-to": "Date to",
+    "day": "Day",
+    "label": "Filters",
+    "month": "Month",
+    "week": "Semana"
+  },
+  "freeswitch": {
+    "status": {
+      "label": "FreeSWITH status"
+    }
+  },
+  "gateways": {
+    "create": "Create gateway",
+    "edit": "Edit Gateway",
+    "label": "Gateways"
+  },
+  "groups": {
+    "create": "Create Group",
+    "edit": "Edit Group",
+    "label": "Groups"
+  },
+  "host": {
+    "apiPassword": "API password",
+    "apiUser": "API username",
+    "cdrBaseUrl": "CDR base URL",
+    "checkEsl": "Check ESL",
+    "eslHost": "ESL host",
+    "eslPassword": "ESL password",
+    "eslPort": "ESL port",
+    "sndBaseUrl": "Sounds base URL"
+  },
+  "hosts": {
+    "create": "Create Host",
+    "edit": "Edit Host",
+    "label": "Hosts"
+  },
+  "inbound-rules": {
+    "label": "Inbound rules"
+  },
+  "item": {
+    "billable": "Billable",
+    "callee": "Callee",
+    "caller": "Caller",
+    "context": "Context",
+    "description": "Description",
+    "direction": "Direction",
+    "domain": "Domain",
+    "duration": "Duration",
+    "external-id": "External ID",
+    "groups": "Groups",
+    "host": "Host",
+    "isEnabled": "Enabled",
+    "name": "Name",
+    "partial-order-id": "Order No",
+    "partial-phone-number": "Phone number (partial match)",
+    "partial-user": "User (partial match)",
+    "phone-number": "Phone number",
+    "record": "Record",
+    "timezone": "Timezone",
+    "user": "User",
+    "value": "Value"
+  },
+  "journals": {
+    "label": "Journals"
+  },
+  "label": {
+    "actions": "Actions",
+    "begin": "Begin",
+    "dayOfWeek": "Day of Week",
+    "description": "Description",
+    "enabled": "Enabled",
+    "end": "End",
+    "exact": "Exact",
+    "name": "Name",
+    "order-id": "Order No",
+    "start-epoch": "Start",
+    "timezone": "Timezone"
+  },
+  "modules": {
+    "label": "Modules"
+  },
+  "no-results": "No resultados",
+  "no-roles": {
+    "label": "No roles"
+  },
+  "outbound-rules": {
+    "label": "Outbount rules"
+  },
+  "params": {
+    "label": "Parameters"
+  },
+  "pbx-admin": {
+    "label": "PBX Administrator"
+  },
+  "periods": {
+    "label": "Periods"
+  },
+  "phone-number": {
+    "direction": "Direction",
+    "number": "Number"
+  },
+  "phone-numbers": {
+    "create": "Create Phone Number",
+    "edit": "Edit Phone Number",
+    "label": "Phone Numbers",
+    "tooltip": "Phone Numbers"
+  },
+  "profile": {
+    "label": "Pofile"
+  },
+  "rules": {
+    "label": "Rules"
+  },
+  "schedule": {
+    "create": "Create schedule",
+    "edit": "Edit schedule"
+  },
+  "schedules": {
+    "label": "Schedulers"
+  },
+  "signout": {
+    "label": "Sign Out"
+  },
+  "sip-profiles": {
+    "create": "Create SIP Profile",
+    "edit": "Edit SIP Profile",
+    "label": "SIP profiles"
+  },
+  "status": {
+    "label": "Status"
+  },
+  "user": {
+    "password": "Password",
+    "username": "Username"
+  },
+  "users": {
+    "candidates": "Candidates",
+    "create": "Create User",
+    "edit": "Edit User",
+    "label": "Users"
+  },
+  "variables": {
+    "label": "Variables"
+  },
+  "wh-manager": {
+    "label": "WH Manager"
+  },
+  "wh-operator": {
+    "label": "WH Operator"
+  }
+}

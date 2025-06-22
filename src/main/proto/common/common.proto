@@ -1,0 +1,110 @@
+syntax = "proto3";
+
+package common;
+
+option java_string_check_utf8 = true;
+option java_generate_equals_and_hash = true;
+option java_multiple_files = true;
+option java_package = "cc.web3e.protobuf.common";
+option java_outer_classname = "CommonProto";
+
+message IdMessage {
+  // @format uuid
+  // @default "00000000-0000-0000-0000-000000000000"
+  string id = 1;
+}
+
+message ListRequest {
+  Pagination pagination = 1;
+}
+
+message Pagination {
+  optional int32 page = 1;
+  optional int32 size = 2;
+  optional int32 total = 3;
+}
+
+message BaseItemMessage {
+  // @format uuid
+  // @default "00000000-0000-0000-0000-000000000000"
+  string id = 1;
+  // @default true
+  bool is_enabled = 2;
+  string name = 3;
+  optional string description = 4;
+}
+
+message BaseItemsList {
+  Pagination pagination = 1;
+  repeated BaseItemMessage items = 2;
+}
+
+message OrderedNameValueMessage {
+  // @format uuid
+  // @default "00000000-0000-0000-0000-000000000000"
+  string left_id = 1; // ID сущности, к которой цепляется параметр/переменная
+  // @format uuid
+  // @default "00000000-0000-0000-0000-000000000000"
+  string right_id = 2; // ID параметра в таблице параметров/переменных
+  // @default true
+  bool is_enabled = 3;
+  string name = 4;
+  optional string description = 5;
+  optional string value = 6;
+  // @default false
+  bool is_required = 7;
+  int32 order = 8;
+}
+
+message OptionItemMessage {
+  string label = 1;
+  string value = 2;
+}
+
+
+
+/// OLD definitions for compatibility
+message ByIdRequest {
+  int32 id = 1;
+}
+
+message OptionItemsList {
+  repeated OptionItem option_items = 1;
+  optional PaginationResponse pagination = 2;
+}
+
+message OptionItem {
+  int32 id = 1;
+  string name = 2;
+}
+
+
+message PaginationOptions {
+  int32 limit = 1;
+  optional uint32 page = 2;
+}
+
+message PaginationResponse {
+  uint32 pages = 1;
+  uint32 total = 2;
+}
+
+
+enum Geo {
+  GEO_NOT_SET = 0;
+  MEXICO = 1;
+  INDIA = 2;
+  UKRAINE = 3;
+  RUSSIA = 4;
+  UKRAINE_2 = 5;
+  UKRAINE_3 = 6;
+}
+
+enum Language {
+  DEFAULT_LANG = 0;  //@TODO refactor to UNKNOWN
+  EN = 45;
+  ES = 230;
+  PT = 545;
+  UA = 720;
+  RU = 570;
+}

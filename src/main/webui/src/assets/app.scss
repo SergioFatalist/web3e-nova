@@ -1,0 +1,349 @@
+:root {
+  --xml-viewer-bracket-color: #111111;
+  --xml-viewer-assignment-color: #986801;
+  --xml-viewer-quote-color: #50a14f;
+  --xml-viewer-attribute-name-color: #986801;
+  --xml-viewer-attribute-value-color: #50a14f;
+  --xml-viewer-cdata-content-color: #50a14f;
+  --xml-viewer-element-content-color: #383a42;
+  --xml-viewer-element-name-color: #e45649;
+  --xml-viewer-remark-content-color: #a0a1a7;
+}
+
+.dark {
+  --xml-viewer-bracket-color: #e1e4e8;
+  --xml-viewer-assignment-color: #b392f0;
+  --xml-viewer-quote-color: #9ecbff;
+  --xml-viewer-attribute-name-color: #b392f0;
+  --xml-viewer-attribute-value-color: #9ecbff;
+  --xml-viewer-cdata-content-color: #9ecbff;
+  --xml-viewer-element-content-color: #e1e4e8;
+  --xml-viewer-element-name-color: #85e89d;
+  --xml-viewer-remark-content-color: #6a737d;
+}
+
+body.body--dark {
+  .q-drawer.q-dark {
+    background: #051429;
+    border-color: #051429;
+  }
+
+  .q-dialog__backdrop {
+    background: rgba(43, 67, 91, 0.8);
+    backdrop-filter: blur(5px);
+  }
+
+  .q-dialog__inner > div {
+    border-radius: 10px;
+  }
+
+  .q-layout__section--marginal {
+    background: #051429;
+    border-color: #051429;
+  }
+  .q-header {
+    .q-toolbar {
+      background: #051429;
+      //padding: 10px;
+    }
+  }
+
+  .q-table__container.q-dark {
+    background: #051429;
+  }
+
+  .q-table--horizontal-separator tbody tr:not(:last-child) > td,
+  .q-table--cell-separator tbody tr:not(:last-child) > td {
+    border-bottom-width: 1px;
+  }
+
+  .q-linear-progress {
+    color: #0090FF !important;
+  }
+  .q-layout,
+  .q-dark {
+    background: #253143;
+  }
+
+  .q-time__header,
+  .q-dialog .q-card.q-card--dark  {
+    background: #051429;
+  }
+
+  .q-drawer .q-item__section {
+    font-size: 14px;
+  }
+
+  .q-dark_bg {
+    background: #051429;
+  }
+
+  .sticky-header-table {
+    .q-table__top,
+    .q-table__bottom,
+    thead tr:first-child th {
+      background-color: #051429;
+    }
+
+    thead tr th,
+    .q-table--loading {
+      position: sticky;
+      z-index: 1;
+    }
+    thead tr:first-child th {
+      top: 0;
+    }
+
+    &.q-table--loading thead tr:last-child th {
+      top: 30px
+    }
+    tbody {
+      scroll-margin-top: 48px;
+    }
+
+  }
+  .dashboard-filters {
+    .q-field--dark .q-field__control:before {
+      background: #051429;
+      border-color: #051429;
+      color: #fff;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  height: 12px;
+  width: 14px;
+  background: transparent;
+  z-index: 12;
+  overflow: visible;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 10px;
+  background-color: var(--q-primary);
+  border-radius: 10px;
+  z-index: 12;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  transition: background-color .32s ease-in-out;
+  margin: 4px;
+  min-height: 32px;
+  min-width: 32px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--q-primary);
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.text-overflow {
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.filter-to {
+  padding-bottom: 24px;
+  & > div {
+    font-size: 16px;
+    line-height: 40px;
+    height: 40px;
+  }
+}
+
+
+.dashboard-stats {
+  padding: 5px 0;
+  &_side {
+    text-align: right;
+    flex-direction: column;
+  }
+
+  &_count {
+    font-weight: 500;
+    font-size: 40px;
+    min-height: 60px;
+  }
+
+  &_money {
+    font-weight: 500;
+    font-size: 20px;
+    min-height: 60px;
+  }
+
+  &_title {
+    font-size: 20px;
+    line-height: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #F98609;
+  }
+
+  &_date {
+    color: #586572;
+    font-size: 10px;
+  }
+
+  &_icon {
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    border: 1px solid #182639;
+    border-radius: 5px;
+    margin-bottom: 8px;
+  }
+
+  &.clicks {
+    .dashboard-stats_title {
+      color: #F98609;
+    }
+  }
+
+  &.balance {
+    .dashboard-stats_icon,
+    .dashboard-stats_title {
+      color: #FF0230;
+    }
+  }
+
+  &.approved {
+    .dashboard-stats_icon,
+    .dashboard-stats_title {
+      color: #27D79E;
+    }
+  }
+
+  &.approved {
+    .dashboard-stats_icon,
+    .dashboard-stats_title {
+      color: #27D79E;
+    }
+  }
+
+  &.leads {
+    .dashboard-stats_icon,
+    .dashboard-stats_title {
+      color: #0090FF;
+    }
+  }
+}
+
+.chart {
+  position: relative;
+  z-index: 99;
+  .axis {
+    color: #46637A;
+  }
+}
+
+.drawer-socials {
+  display: flex;
+  justify-content: center;
+}
+
+.drawer-support {
+  text-align: center;
+  padding: 50px 10px;
+  background: #1A2637;
+  &-title {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+
+  .drawer-socials {
+    & > div {
+      margin: 0 20px;
+    }
+  }
+}
+
+.q-drawer--mini {
+  .drawer-support {
+    display: none;
+  }
+}
+
+.header-tg-chat {
+  display: inline-block;
+  margin-left: 18px;
+}
+
+
+/* stiky hader and first column table */
+.sticky-header-column-table {
+  /* height or max-height is important */
+
+  /* specifying max-width so the example can
+    highlight the sticky column on any browser window */
+  //max-width: 100%;
+
+  td:first-child {
+    /* bg color is important for td; just specify one */
+    background-color: #051429
+  }
+
+  tr th {
+    position: sticky;
+    /* higher than z-index for td below */
+    z-index: 2;
+    /* bg color is important; just specify one */
+    background: #051429;
+  }
+
+  /* this will be the loading indicator */
+  thead tr:last-child th {
+    /* height of all previous header rows */
+    top: 48px;
+    /* highest z-index */
+    z-index: 3;
+  }
+
+  thead tr:first-child th {
+    top: 0;
+    z-index: 1;
+    border-right-width: 1px;
+  }
+
+  tr:first-child th:first-child {
+    /* highest z-index */
+    z-index: 3;
+  }
+
+  td:first-child {
+    z-index: 1;
+    border-right-width: 1px;
+  }
+
+  td:first-child, th:first-child {
+    position: sticky;
+    left: 0;
+  }
+
+  /* prevent scrolling behind sticky top row on focus */
+  tbody {
+    /* height of all previous header rows */
+    scroll-margin-top: 48px;
+  }
+}

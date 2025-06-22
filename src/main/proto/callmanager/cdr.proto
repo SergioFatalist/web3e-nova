@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package callmanager;
+
+option java_string_check_utf8 = true;
+option java_generate_equals_and_hash = true;
+option java_multiple_files = true;
+option java_package = "cc.web3e.protobuf.callmanager";
+option java_outer_classname = "CDRProto";
+
+import "common/common.proto";
+import "google/protobuf/wrappers.proto";
+
+service CDRService {
+  rpc ListCDRs (CDRsList) returns (CDRsList) {};
+  rpc GetRawXml (common.IdMessage) returns (google.protobuf.StringValue) {};
+}
+
+message CDRMessage {
+  string id = 1;
+  string direction = 2;
+  string host_id = 3;
+  string domain_id = 4;
+  string from_user_id = 5;
+  string to_user_id = 6;
+  string from_phone_number_id = 7;
+  string to_phone_number_id = 8;
+  string sip_call_id = 9;
+  string sip_from = 10;
+  string sip_to = 11;
+  int64 start_epoch = 12;
+  int64 answer_epoch = 13;
+  int64 end_epoch = 14;
+  int64 duration = 15;
+  int64 bill_sec = 16;
+  int64 progress_sec = 17;
+  int64 answer_sec = 18;
+  int64 wait_sec = 19;
+  bool is_lost = 20;
+  string hangup_cause = 21;
+  string hangup_cause_q850 = 22;
+  string sip_hangup_disposition = 23;
+  string record_path = 24;
+  string raw_id = 25;
+  int64 crm_order_id = 26;
+}
+
+message CDRsList {
+  common.Pagination pagination = 1;
+  optional CDRListFilter filter = 2;
+  repeated CDRMessage items = 3;
+}
+
+message CDRListFilter {
+  optional string host_id = 1;
+  optional string domain_id = 2;
+  optional int64 from_epoch = 3;
+  optional int64 to_epoch = 4;
+  optional string user_id = 5;
+  optional string phone_number_id = 6;
+  optional string user_search = 7;
+  optional string phone_number_search = 8;
+  optional string direction = 9;
+  optional int64 crm_order_id = 10;
+}

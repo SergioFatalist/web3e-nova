@@ -1,0 +1,141 @@
+quarkus:
+  devservices:
+    enabled: false
+  live-reload:
+    instrumentation: true
+  log:
+    level: INFO
+    category:
+      "cc.web3e":
+        level: DEBUG
+  console:
+    color: true
+  quinoa:
+    package-manager-install:
+      ~: true
+      node-version: 22.11.0
+      pnpm-version: 9.15.4
+    enable-spa-routing: true
+    ui-root-path: /
+    ignored-path-prefixes: /api
+  infinispan-client:
+    use-auth: false
+    hosts: ${INFINISPAN_HOSTS}
+  oidc:
+    enabled: true
+    authentication:
+      user-info-required: true
+      restore-path-after-redirect: true
+      java-script-auto-redirect: false
+      state-cookie-age: 30s
+      allow-multiple-code-flows: false
+    application-type: web-app
+    roles:
+      source: accesstoken
+      role-claim-path: realm_access/roles
+    token:
+      refresh-expired: true
+    token-state-manager:
+      split-tokens: true
+    default-token-cache-enabled: false
+    auth-server-url: ${SSO_URL}/realms/${SSO_REALM}
+    client-id: ${SSO_CLIENT_ID}
+    credentials:
+      secret: ${SSO_CLIENT_SECRET}
+  keycloak:
+    policy-enforcer:
+      enable: true
+      lazy-load-paths: false
+      paths:
+        "quarkus":
+          paths: /q/dev/*
+          enforcement-mode: DISABLED
+        "assets":
+          paths: /assets/*
+          enforcement-mode: DISABLED
+        "check-auth":
+          paths: /api/auth/check-auth
+          enforcement-mode: DISABLED
+        "all":
+          paths: /*
+          enforcement-mode: ENFORCING
+    admin-client:
+      server-url: ${ADMIN_URL}
+      realm: ${SSO_REALM}
+      client-id: ${ADMIN_CLIENT_ID}
+      client-secret: ${ADMIN_CLIENT_SECRET}
+      grant-type: client-credentials
+  http:
+    host: 0.0.0.0
+    port: 4200
+    cors:
+      ~: true
+      origins: http://localhost:9090,http://localhost:9080,http://127.0.0.1:5173
+      methods: GET,POST,PUT,OPTIONS,DELETE
+      access-control-allow-credentials: true
+    auth:
+      permission:
+        permit-dev:
+          enabled: false
+          paths: /q/*
+          policy: permit
+  grpc:
+    server:
+      use-separate-server: false
+    clients:
+      callmanager:
+        host: ${CALLMANAGER_HOST}
+        port: ${CALLMANAGER_PORT}
+        keep-alive-time: 30s
+        keep-alive-timeout: 10s
+        keep-alive-without-calls: true
+        idle-timeout: 60s
+#        compression: gzip
+      userservice:
+        host: ${USERSERVICE_HOST}
+        port: ${USERSERVICE_PORT}
+        keep-alive-time: 30s
+        keep-alive-timeout: 10s
+        keep-alive-without-calls: true
+        idle-timeout: 60s
+#        compression: gzip
+
+
+utgid:
+  jwk-privkey: ${JWK_PRIVKEY}
+  jwk-pubkey: ${JWK_PUBKEY}
+
+"%dev":
+  quarkus:
+    quinoa:
+      direct-forwarding: true
+
+"%prod":
+  quarkus:
+    infinispan-client:
+      use-auth: true
+      hosts: ${INFINISPAN_HOSTS}
+      username: ${INFINISPAN_USERNAME}
+      password: ${INFINISPAN_PASSWORD}
+    http:
+      cors:
+        ~: true
+        origins: "*"
+        methods: GET,POST,PUT,OPTIONS,DELETE
+        access-control-allow-credentials: true
+      proxy:
+        forwarded-host-header: X-Forwarded-Host
+        proxy-address-forwarding: true
+        allow-forwarded: false
+        allow-x-forwarded: true
+        forwarded-precedence: x-forwarded
+        enable-forwarded-host: true
+      auth:
+        permission:
+          assets:
+            enabled: true
+            paths:
+              - /assets
+              - /assets/
+              - /assets/*
+            policy: permit

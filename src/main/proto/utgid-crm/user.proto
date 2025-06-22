@@ -1,0 +1,600 @@
+syntax = "proto3";
+
+package user;
+
+option java_string_check_utf8 = true;
+option java_generate_equals_and_hash = true;
+option java_multiple_files = true;
+option java_package = "cc.web3e.protobuf.utgidcrm";
+option java_outer_classname = "UserProto";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+import "common/common.proto";
+
+service UserService {
+
+  rpc SignUp (SignUpRequest) returns (AuthUserResponse) {};
+
+  rpc UpdateUser (UpdateUserRequest) returns (User) {};
+
+  rpc ChangePassword (ChangePasswordRequest) returns (AuthUserResponse) {};
+
+  rpc ForgotPassword (ForgotPasswordRequest) returns (google.protobuf.Empty) {};
+
+  rpc IsEmailNotRegistered(SignInRequest) returns (google.protobuf.Empty) {};
+
+  rpc VerifyEmail(VerifyEmailCodeRequest) returns (AuthUserResponse) {};
+
+  rpc RefreshToken(google.protobuf.Empty) returns (TokenResponse) {};
+
+  rpc VerifyToken(google.protobuf.Empty) returns (TokenResponse) {};
+
+  rpc SignIn (SignInRequest) returns (AuthUserResponse) {};
+
+  rpc SignOut (google.protobuf.Empty) returns (google.protobuf.Empty) {};
+
+  rpc DeleteSession(DeleteSessionRequest) returns (google.protobuf.Empty) {};
+
+  rpc FindUser (User) returns (User) {};
+
+  rpc GetUserById(common.ByIdRequest) returns (User) {};
+
+  rpc GetUserProfile(google.protobuf.Empty) returns (User) {};
+
+  rpc ListUserRoles(common.ByIdRequest) returns (ListUserRolesResponse) {};
+
+  rpc HasPermission(HasPermissionRequest) returns (User) {};
+
+  rpc CreatePermission(Permission) returns (Permission) {};
+
+  rpc DeletePermission(Permission) returns (google.protobuf.Empty) {};
+
+  rpc ListPermissions(Permission) returns (PermissionsResponse) {};
+
+  rpc GetPermission(Permission) returns (Permission) {};
+
+  rpc UpdatePermission(Permission) returns (Permission) {};
+
+  rpc CreateOrganization(CreateOrganizationRequest) returns (Organization) {};
+
+  rpc UpdateOrganization(UpdateOrganizationRequest) returns (Organization) {}
+
+  rpc SignUpToOrganization(SignUpToOrganizationRequest) returns (SignUpToOrganizationResponse) {};
+
+  rpc RemoveFromOrganization(RemoveFromOrganizationRequest) returns (google.protobuf.Empty) {};
+
+  rpc CreateInvite(CreateInviteRequest) returns (google.protobuf.Empty) {};
+
+  rpc ListInvite(ListInviteRequest) returns (ListInviteResponse) {}
+
+  rpc DeleteInvite(common.ByIdRequest) returns (google.protobuf.Empty) {}
+
+  rpc ListCrmUsers(ListCrmUsersRequest) returns (ListCrmUsersResponse) {}
+
+  rpc UpdateCrmUserRole(UpdateCrmUserRoleRequest) returns (google.protobuf.Empty) {}
+
+  rpc ConfirmationInvite(common.ByIdRequest) returns (google.protobuf.Empty) {}
+
+  rpc GetStatus(google.protobuf.Empty) returns (Options) {}
+
+  rpc ListUsers(ListUsersRequest) returns (ListUsersResponse) {}
+
+  rpc CheckApiKey(CheckApiKeyRequest) returns (CheckApiKeyResponse) {}
+
+  rpc FindUserIdByApiKey(ApiKeyRequest) returns (ApiKeyUserResponse) {}
+
+  rpc CreateApiKey(common.ByIdRequest) returns (ApiKey) {}
+
+  rpc YourselfCreateApiKey(google.protobuf.Empty) returns (ApiKey) {}
+
+  rpc GetUserByApiKey(GetUserByApiKeyRequest) returns (User) {}
+
+  rpc ListAdvertisersPublishers(google.protobuf.Empty) returns (ListAdvertisersPublishersResponse) {}
+
+  rpc ListAdvIdEmailCompanyNames(google.protobuf.Empty) returns (ListAdvIdEmailCompanyNamesResponse) {}
+
+  rpc ListPubIdEmails(google.protobuf.Empty) returns (ListPubIdEmailsResponse) {}
+
+  rpc ListUsersInfo(ListUsersInfoRequest) returns (ListUsersInfoResponse) {}
+
+  rpc ListUserSipInfo(ListUserSipInfoRequest) returns (ListUserSipInfoResponse) {}
+
+  rpc AdminUpdateUser(AdminUpdateUserRequest) returns (User) {};
+  rpc AdminListUsers(ListUsersRequest) returns (ListUsersResponse) {}
+  rpc AdminGetUserProfile(common.ByIdRequest) returns (User) {};
+
+  rpc GetUsersEmailsByIds(GetUsersEmailsByIdsRequest) returns (GetUsersEmailsByIdsResponse) {};
+
+  rpc DeliveryManagerListCouriers(common.ByIdRequest) returns (DeliveryManagerListCouriersResponse) {}
+
+  rpc ListUsersByRole(ListUsersByRoleRequest) returns (ListUsersByRoleResponse) {option deprecated = true;}
+
+  rpc GetUsersAsOptionsList(ListUsersRequest) returns (common.OptionItemsList) {option deprecated = true;}
+
+  rpc CCOperatorsList(CCOperatorsListRequest) returns (ListUsersInfoResponse) {}
+
+  rpc CreateCCOperator(CreateCCOperatorRequest) returns (google.protobuf.Empty) {};
+
+  rpc UnblockCCOperator(UnblockCCOperatorRequest) returns (google.protobuf.Empty) {};
+
+  rpc BlockCCOperator(common.ByIdRequest) returns (google.protobuf.Empty) {};
+
+  rpc GetUsersSipAccounts (UsersSipAccountsRequest) returns (UsersSipAccountsResponse) {};
+
+  rpc GetSipAccountsByHost (google.protobuf.StringValue) returns (UsersSipAccountsResponse) {};
+
+  rpc PushUserWorkState (PushUserWorkStateRequest) returns (User) {};
+}
+
+message PushUserWorkStateRequest {
+  optional int32 control_user_id = 1;
+  optional int32 affected_user_id = 2;
+  UserWorkState user_work_state = 3;
+  optional SipTarget sip_target = 5;
+  repeated int32 sip_line_ids = 6;
+}
+
+message ListUsersByRoleRequest {
+  UserRoles role_id = 1;
+}
+
+message ListUsersByRoleResponse {
+  repeated User users = 1;
+}
+
+message DeliveryManagerListCouriersResponse {
+  repeated Courier couriers = 1;
+}
+
+message Courier {
+  int32 id = 1;
+  repeated UserEmail emails = 2;
+  optional string first_name = 3;
+  optional string last_name = 4;
+  optional string description = 5;
+  optional string contact_info = 6;
+  optional string warehouse_ids = 7;
+}
+
+message GetUsersEmailsByIdsRequest {
+  repeated int32 user_ids = 1;
+}
+
+message GetUsersEmailsByIdsResponse {
+  repeated UserIdEmail user_ids_emails = 1;
+}
+
+message UserIdEmail {
+  int32 user_id = 1;
+  string email = 2;
+}
+
+message ListUserSipInfoRequest {
+  repeated int32 user_ids = 1;
+  repeated common.Geo valid_geos = 2;
+}
+
+message ListUserSipInfoResponse {
+  repeated UserIdSip users = 1;
+}
+
+message UserIdSip {
+  int32 user_id = 1;
+  repeated UserEmail emails = 3;
+  optional string first_name = 4;
+  optional string last_name = 5;
+  repeated UserSipAccount sip_accounts = 6;
+}
+
+message AdminUpdateUserRequest {
+  int32 user_id = 1;
+  UpdateUserRequest user = 2;
+}
+
+message GetUserByApiKeyRequest {
+  string key = 1;
+}
+
+message ListUsersInfoResponse {
+  repeated UserInfo users = 1;
+}
+
+message UserInfo {
+  int32 user_id = 1;
+  string email = 2;
+  string company_name = 3;
+  int32 signed_up_at = 4; // date of registration
+  string name = 5;
+  bool is_active = 6;
+}
+
+message ListUsersInfoRequest {
+  repeated int32 user_ids = 1;
+  optional string query = 2; // id, email or company name
+  optional int32 sign_up_from = 3;
+  optional int32 sign_up_to = 4;
+  repeated UserRoles roles = 5;
+}
+
+message CCOperatorsListRequest {
+  repeated UserRoles roles = 1;
+  repeated common.Geo geos = 2;
+}
+
+message PubIdEmail {
+  int32 id = 1;
+  string email = 2;
+}
+
+message AdvIdEmailCompanyName {
+  int32 id = 1;
+  string email = 2;
+  string company_name = 3;
+}
+
+message ListAdvertisersPublishersResponse {
+  repeated PubIdEmail pub_id_email = 1;
+  repeated AdvIdEmailCompanyName adv_id_email_company_name = 2;
+}
+
+message ListAdvIdEmailCompanyNamesResponse {
+  repeated AdvIdEmailCompanyName adv_id_email_company_names = 1;
+}
+
+message ListPubIdEmailsResponse {
+  repeated PubIdEmail pub_id_email = 1;
+}
+
+message CheckApiKeyRequest {
+  optional int32 user_id = 1 [deprecated = true];
+  string key = 2;
+}
+
+message CheckApiKeyResponse {
+  int32 user_id = 1;
+  string key = 2;
+  bool api_debug = 3;
+}
+
+message ApiKeyRequest {
+  string key = 1;
+}
+
+message ApiKeyUserResponse {
+  int32 user_id = 1;
+}
+
+message ApiKey {
+  int32 id = 1;
+  int32 user_id = 2;
+  string key = 3;
+  int32 created_at = 4;
+  int32 modified_at = 5;
+}
+
+message ListUsersFilter {
+  optional string email = 1;
+  optional user.UserRoles role = 2;
+}
+
+message ListUsersRequest {
+  optional common.PaginationOptions pagination = 1;
+  optional ListUsersFilter filter = 2;
+}
+
+message ListUsersResponse {
+  repeated User users = 1;
+  common.PaginationResponse pagination = 2;
+}
+
+message CreateInviteRequest {
+  string email = 1;
+  UserRoles role_id = 2;
+}
+
+message ListInviteRequest {
+  optional common.PaginationOptions pagination = 1;
+}
+
+message ListInviteResponse {
+  repeated Invite invite = 1;
+  common.PaginationResponse pagination = 2;
+}
+
+message ListCrmUsersRequest {
+  optional common.PaginationOptions pagination = 2;
+}
+
+message ListCrmUsersResponse {
+  repeated EmployeeCrm employee_crm = 1;
+  common.PaginationResponse pagination = 2;
+}
+
+message UpdateCrmUserRoleRequest {
+  int32 publisher_id = 1;
+  UserRoles new_role = 2;
+}
+
+message Invite {
+  int32 id = 1;
+  string organization_name = 2;
+  UserRoles role_id = 3;
+  int32 advertiser_id = 4;
+  int32 publisher_id = 5;
+  string publisher_email = 6;
+  int32 created_at = 7;
+}
+
+message EmployeeRole {
+  UserRoles role_id = 1;
+  int32 modified_at = 2;
+}
+
+message EmployeeCrm {
+  int32 user_id = 1;
+  repeated string email = 2;
+  repeated EmployeeRole roles = 3;
+}
+
+message PermissionsResponse {
+  repeated Permission permissions = 1;
+}
+
+message HasPermissionRequest {
+  string access_token = 1;
+  string path = 2;
+}
+
+message ListUserRolesResponse {
+  repeated UserRoles roles = 1;
+}
+
+message Permission {
+  int32 id = 1;
+  int32 role_id = 3;
+  int32 user_id = 4;
+  string package = 5;
+  string service = 6;
+  string endpoint = 7;
+}
+
+message ChangePasswordRequest {
+  string old_password = 1;
+  string new_password = 2;
+}
+
+
+message DeleteSessionRequest {
+  int32 session_id = 1;
+  bool delete_all = 2;
+  int32 user_id = 3;
+}
+
+message ForgotPasswordRequest {
+  string email = 1;
+}
+
+message SignUpRequest {
+  string email = 1;
+  string password = 2;
+  UserRoles role_id = 3;
+  optional common.Language lang = 4;
+}
+
+message CreateCCOperatorRequest {
+  string email = 1;
+  string password = 2;
+  repeated UserRoles role_ids = 3;
+  optional common.Language lang = 4;
+  common.Geo geo = 5;
+  optional string first_name = 6;
+  optional string last_name = 7;
+}
+
+message VerifyEmailCodeRequest {
+  string code = 1;
+  string email = 2;
+}
+
+message UpdateUserRequest {
+  optional string first_name = 1;
+  optional string last_name = 2;
+  optional string description = 3;
+  optional string contact_info = 4;
+  optional common.Language lang = 5;
+  optional string phone = 6;
+  optional string telegram = 7;
+  optional string skype = 8;
+  optional int32 country = 9;
+  optional string timezone = 10;
+  optional bool is_active = 11;
+}
+
+message SignInRequest {
+  string email = 1;
+  string password = 2;
+}
+
+message AuthUserResponse {
+  User user = 1;
+  string token_valid_until = 2;
+}
+
+message TokenResponse {
+  string token_valid_until = 1;
+}
+
+message User {
+  int32 id = 1;
+  repeated UserEmail emails = 2;
+  repeated UserRoles role_ids = 3;
+  AuthLevel auth_level = 4;
+  optional string first_name = 5;
+  optional string last_name = 6;
+  optional string description = 7;
+  optional string contact_info = 8;
+  common.Language lang = 9;
+  bool is_active = 10;
+  optional string generated_username = 11; //need to fix case
+  optional int32 organization_id = 12;
+  optional string phone = 13;
+  optional string telegram = 14;
+  optional string skype = 15;
+  optional int32 country = 16;
+  optional string timezone = 17;
+  optional bool is_api_key = 18;
+  optional int32 created_at_api_key = 19;
+  optional string warehouse_ids = 20;
+  repeated common.Geo geos = 21;
+  optional int32 access_to_data_from = 22;
+  repeated UserSipAccount sip_accounts = 23;
+  optional UserAttributes attributes = 24;
+}
+
+message UserSipAccount {
+  int32 id = 1;
+  int32 user_id = 2;
+  SipTarget sip_target = 3;
+  string sip_username = 4;
+  string sip_password = 5;
+  string sip_domain = 6;
+  string sip_proxy = 7;
+}
+
+message UserAttributes {
+  SipTarget sip_target = 1;
+  SipPresence sip_presence = 2;
+}
+
+message UsersSipAccountsRequest {
+  repeated int32 user_ids = 1;
+  SipTarget sip_target = 2;
+}
+
+message UsersSipAccountsResponse {
+  repeated UserSipAccount sip_accounts = 1;
+}
+
+message UserEmail {
+  int32 id = 1;
+  int32 user_id = 2;
+  string email = 3;
+  optional string address = 4;
+  bool is_validated = 5;
+}
+
+message CreateOrganizationRequest {
+  string name = 1;
+}
+
+message UpdateOrganizationRequest {
+  int32 id = 1;
+  string name = 2;
+}
+
+message Organization {
+  int32 id = 1;
+  int32 owner_id = 2;
+  string name = 3;
+  OrganizationType organization_type =4;
+}
+
+message SignUpToOrganizationRequest {
+  int32 organization_id = 1;
+  string email = 2;
+  string password = 3;
+  UserRoles role_id = 4;
+  optional common.Language lang = 5;
+}
+
+message SignUpToOrganizationResponse {
+  int32 organization_id = 1;
+  User user = 2;
+  string password = 3;
+}
+
+message UnblockCCOperatorRequest {
+  int32 user_id = 1;
+  string password = 2;
+}
+
+message RemoveFromOrganizationRequest {
+  int32 user_id = 2;
+}
+
+message Options {
+  int32 id = 1;
+  bool registration_advertiser = 2;
+  bool registration_publisher = 3;
+  bool maintenance_web = 4;
+  bool maintenance_my = 5;
+}
+
+enum OrganizationType {
+  NOT_SET = 0;
+  DEFAULT = 1;
+  CRM = 2;
+}
+
+enum UserRoles {
+  UNKNOWN = 0;
+  ADVERTISER = 1;
+  PUBLISHER = 2;
+  CALLCENTER_OPERATOR = 3;
+  CALLCENTER_MANAGER = 4;
+  SUPERVISOR = 5;
+  ADMINISTRATOR = 6;
+  DESIGNER = 7;
+  CRM_WAREHOUSE_OPERATOR = 8;
+  CRM_WAREHOUSE_MANAGER = 9;
+  CRM_USER = 10;
+  CRM_MANAGER = 11;
+  CRM_ADMIN = 12;
+  CPA_ADMIN = 13;
+  FINANCIER = 14;
+  DELIVERY_MANAGER = 15;
+  COURIER = 16;
+  CALLCENTER_OPERATOR_COLD = 17;
+  CALLCENTER_OPERATOR_REJECTED = 18;
+}
+
+enum AuthLevel {
+  AUTH_LEVEL_UNKNOWN = 0;
+  UNAUTHORIZED = 1;
+  BANNED = 2;
+  UNVERIFIED = 3;
+  USER = 4; // advertiser or publisher
+  BACKOFFICE = 5; // management
+  ADMIN = 6;
+}
+
+enum SipTarget {
+  SIP_TARGET_UNKNOWN = 0;
+  SIP_TARGET_MANUAL_DIAL = 1;
+  SIP_TARGET_AUTODIAL = 2;
+}
+
+enum SipPresence {
+  SIP_PRESENCE_UNKNOWN = 0;
+  SIP_PRESENCE_STOP = 1;
+  SIP_PRESENCE_WORK = 2;
+  SIP_PRESENCE_PAUSE = 3;
+}
+
+enum UserWorkState {
+  USER_WORK_STATE_UNKNOWN = 0;
+  USER_WORK_STATE_ASSIGNED_AUTODIAL = 1;
+  USER_WORK_STATE_UNASSIGNED_AUTODIAL = 2;
+  USER_WORK_STATE_GLOBAL_WORK_START = 3;
+  USER_WORK_STATE_GLOBAL_WORK_SUSPEND = 4;
+  USER_WORK_STATE_GLOBAL_WORK_RESUME = 5;
+  USER_WORK_STATE_GLOBAL_WORK_STOP = 6;
+  USER_WORK_STATE_AUTODIAL_WORK_START = 7;
+  USER_WORK_STATE_AUTODIAL_WORK_SUSPEND = 8;
+  USER_WORK_STATE_AUTODIAL_WORK_RESUME = 9;
+  USER_WORK_STATE_AUTODIAL_WORK_STOP = 10;
+  USER_WORK_STATE_CALL_START = 11;
+  USER_WORK_STATE_CALL_FINISH = 12;
+}

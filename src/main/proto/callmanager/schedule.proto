@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package callmanager;
+
+option java_string_check_utf8 = true;
+option java_generate_equals_and_hash = true;
+option java_multiple_files = true;
+option java_package = "cc.web3e.protobuf.callmanager";
+option java_outer_classname = "ScheduleProto";
+
+import "common/common.proto";
+import "google/protobuf/empty.proto";
+
+service ScheduleService {
+  rpc ListSchedules (common.ListRequest) returns (SchedulesList) {};
+  rpc GetSchedule (common.IdMessage) returns (ScheduleMessage) {};
+  rpc SetSchedule (ScheduleMessage) returns (ScheduleMessage) {};
+  rpc ToggleSchedule (common.IdMessage) returns (google.protobuf.Empty) {};
+  rpc DeleteSchedule (common.IdMessage) returns (google.protobuf.Empty) {};
+}
+
+message ScheduleMessage {
+  // @format uuid
+  // @default "00000000-0000-0000-0000-000000000000"
+  string id = 1;
+  // @default true
+  bool is_enabled = 2;
+  string name = 3;
+  optional string description = 4;
+  // @default "Europe/London"
+  string timezone = 5;
+  repeated SchedulePeriodMessage periods = 6;
+}
+
+message SchedulePeriodMessage {
+  // @format uuid
+  // @default "00000000-0000-0000-0000-000000000000"
+  string id = 1;
+  // @default true
+  bool is_enabled = 2;
+  // @default false
+  bool is_exact = 3;
+  optional int32 begin_day = 4;
+  optional string begin_date = 5;
+  optional string begin_time = 6;
+  optional int32 end_day = 7;
+  optional string end_date = 8;
+  optional string end_time = 9;
+}
+
+message SchedulesList {
+  optional common.Pagination pagination = 1;
+  repeated ScheduleMessage items = 2;
+}

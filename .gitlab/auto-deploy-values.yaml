@@ -1,0 +1,51 @@
+affinity: # this antiAffinity is set up to ensure runners start on differnt nodes.
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+              - key: app
+                operator: In
+                values:
+                  - nova
+          topologyKey: "kubernetes.io/hostname"
+
+ingress:
+  enabled: true
+  paths:
+    - path: "/"
+  tls:
+    enabled: true
+    acme: false
+    useDefaultSecret: false
+  annotations:
+    kubernetes.io/ingress.class: contour
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+
+service:
+  name: nova
+  annotations:
+    projectcontour.io/upstream-protocol.h2c: "4200"
+  internalPort: 4200
+  externalPort: 4200
+
+readinessProbe:
+  probeType: httpGet
+  scheme: HTTP
+  path: /
+  port: 4200
+  initialDelaySeconds: 10
+  timeoutSeconds: 3
+
+livenessProbe:
+  probeType: httpGet
+  scheme: HTTP
+  path: /
+  port: 4200
+  initialDelaySeconds: 10
+  timeoutSeconds: 3
+
+#extraEnvFrom:
+#  - secretRef:
+#      name: services-config

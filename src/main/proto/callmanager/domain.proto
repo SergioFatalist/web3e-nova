@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package callmanager;
+
+option java_string_check_utf8 = true;
+option java_generate_equals_and_hash = true;
+option java_multiple_files = true;
+option java_package = "cc.web3e.protobuf.callmanager";
+option java_outer_classname = "DomainProto";
+
+import "common/common.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service DomainService {
+  rpc ListDomains (common.ListRequest) returns (common.BaseItemsList) {};
+  rpc GetDomain (common.IdMessage) returns (DomainMessage) {};
+  rpc SetDomain (DomainMessage) returns (DomainMessage) {};
+  rpc ToggleDomain (common.IdMessage) returns (google.protobuf.Empty) {};
+  rpc RemoveDomain (common.IdMessage) returns (google.protobuf.Empty) {};
+  rpc SyncDomainsCache (google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc GetFreeswitchXml (common.IdMessage) returns (google.protobuf.StringValue) {};
+}
+
+message DomainMessage {
+  // @format uuid
+  // @default "00000000-0000-0000-0000-000000000000"
+  string id = 1;
+  // @default true
+  bool is_enabled = 2;
+  string name = 3;
+  optional string description = 4;
+  // @default []
+  repeated common.OrderedNameValueMessage params = 5;
+  // @default []
+  repeated common.OrderedNameValueMessage variables = 6;
+}
+
+
+

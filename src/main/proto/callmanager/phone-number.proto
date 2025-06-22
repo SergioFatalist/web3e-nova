@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package callmanager;
+
+option java_string_check_utf8 = true;
+option java_generate_equals_and_hash = true;
+option java_multiple_files = true;
+option java_package = "cc.web3e.protobuf.callmanager";
+option java_outer_classname = "PhoneNumberProto";
+
+import "common/common.proto";
+import "google/protobuf/empty.proto";
+
+service PhoneNumberService {
+  rpc ListPhoneNumbers (common.ListRequest) returns (PhoneNumbersList) {};
+  rpc GetPhoneNumber (common.IdMessage) returns (PhoneNumberMessage) {};
+  rpc SetPhoneNumber (PhoneNumberMessage) returns (PhoneNumberMessage) {};
+  rpc TogglePhoneNumber (common.IdMessage) returns (google.protobuf.Empty) {};
+  rpc RemovePhoneNumber (common.IdMessage) returns (google.protobuf.Empty) {};
+}
+
+message PhoneNumberMessage {
+  // @format uuid
+  // @default "00000000-0000-0000-0000-000000000000"
+  string id = 1;
+  // @default true
+  bool is_enabled = 2;
+  string name = 3;
+  optional string description = 4;
+  string direction = 5;
+}
+
+message PhoneNumbersList {
+  common.Pagination pagination = 1;
+  repeated PhoneNumberMessage items = 2;
+}
+

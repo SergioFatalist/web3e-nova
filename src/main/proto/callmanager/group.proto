@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package callmanager;
+
+option java_string_check_utf8 = true;
+option java_generate_equals_and_hash = true;
+option java_multiple_files = true;
+option java_package = "cc.web3e.protobuf.callmanager";
+option java_outer_classname = "GroupProto";
+
+import "common/common.proto";
+import "google/protobuf/empty.proto";
+
+service GroupService {
+  rpc ListGroups (common.ListRequest) returns (common.BaseItemsList) {};
+  rpc GetGroup (common.IdMessage) returns (GroupMessage) {};
+  rpc SetGroup (GroupMessage) returns (GroupMessage) {};
+  rpc ToggleGroup (common.IdMessage) returns (google.protobuf.Empty) {};
+  rpc RemoveGroup (common.IdMessage) returns (google.protobuf.Empty) {};
+  rpc SyncGroupsCache (google.protobuf.Empty) returns (google.protobuf.Empty);
+}
+
+message GroupMessage {
+  // @format uuid
+  // @default "00000000-0000-0000-0000-000000000000"
+  string id = 1;
+  // @default true
+  bool is_enabled = 2;
+  string name = 3;
+  optional string description = 4;
+  // @default []
+  repeated string domain_ids = 5;
+}
+

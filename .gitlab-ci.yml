@@ -1,0 +1,4 @@
+include:
+  - project: stuff/ci-cd-scripts
+    file: web3e-build-deploy-jvm.yml
+    ref: main

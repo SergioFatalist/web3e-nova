@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package callmanager;
+
+option java_string_check_utf8 = true;
+option java_generate_equals_and_hash = true;
+option java_multiple_files = true;
+option java_package = "cc.web3e.protobuf.callmanager";
+option java_outer_classname = "UserProto";
+
+import "common/common.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service UserService {
+  rpc ListUsers (common.ListRequest) returns (common.BaseItemsList) {};
+  rpc GetUser (common.IdMessage) returns (UserMessage) {};
+  rpc SetUser (UserMessage) returns (UserMessage) {};
+  rpc ToggleUser (common.IdMessage) returns (google.protobuf.Empty) {};
+  rpc RemoveUser (common.IdMessage) returns (google.protobuf.Empty) {};
+  rpc GetUserTemplate (google.protobuf.Empty) returns (UserMessage) {};
+  rpc SyncUsersCache (google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc GetFreeswitchXml (common.IdMessage) returns (google.protobuf.StringValue) {};
+}
+
+message UserMessage {
+  // @format uuid
+  // @default "00000000-0000-0000-0000-000000000000"
+  string id = 1;
+  // @default true
+  bool is_enabled = 2;
+  string name = 3;
+  optional string description = 4;
+  string password = 5;
+  string external_id = 6;
+  string context_id = 7;
+  // @default []
+  repeated string group_ids = 8;
+  // @default []
+  repeated common.OrderedNameValueMessage params = 9;
+  // @default []
+  repeated common.OrderedNameValueMessage variables = 10;
+}
+

@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package callmanager;
+
+option java_string_check_utf8 = true;
+option java_generate_equals_and_hash = true;
+option java_multiple_files = true;
+option java_package = "cc.web3e.protobuf.callmanager";
+option java_outer_classname = "SipProfileProto";
+
+import "common/common.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service SipProfileService {
+  rpc ListSipProfiles (common.ListRequest) returns (common.BaseItemsList) {};
+  rpc GetSipProfile (common.IdMessage) returns (SipProfileMessage) {};
+  rpc SetSipProfile (SipProfileMessage) returns (SipProfileMessage) {};
+  rpc ToggleSipProfile (common.IdMessage) returns (google.protobuf.Empty) {};
+  rpc RemoveSipProfile (common.IdMessage) returns (google.protobuf.Empty) {};
+  rpc GetSipProfileTemplate (google.protobuf.Empty) returns (SipProfileMessage) {};
+  rpc SyncSipProfilesCache (google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc GetFreeswitchXml (common.IdMessage) returns (google.protobuf.StringValue) {};
+}
+
+message SipProfileMessage {
+  // @format uuid
+  // @default "00000000-0000-0000-0000-000000000000"
+  string id = 1;
+  // @default true
+  bool is_enabled = 2;
+  string name = 3;
+  optional string description = 4;
+  string context_id = 5;
+  // @default []
+  repeated common.OrderedNameValueMessage params = 6;
+}
+

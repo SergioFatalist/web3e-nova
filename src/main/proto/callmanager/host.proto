@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package callmanager;
+
+option java_string_check_utf8 = true;
+option java_generate_equals_and_hash = true;
+option java_multiple_files = true;
+option java_package = "cc.web3e.protobuf.callmanager";
+option java_outer_classname = "HostProto";
+
+import "common/common.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service HostService {
+  rpc ListHosts (common.ListRequest) returns (common.BaseItemsList);
+  rpc GetHost (common.IdMessage) returns (HostMessage);
+  rpc SetHost (HostMessage) returns (HostMessage);
+  rpc ToggleHost (common.IdMessage) returns (google.protobuf.Empty);
+  rpc RemoveHost (common.IdMessage) returns (google.protobuf.Empty);
+  rpc GetHostTemplate (google.protobuf.Empty) returns (HostMessage) {};
+  rpc GetFreeswitchXml (common.IdMessage) returns (google.protobuf.StringValue) {};
+  rpc SyncHostsCache (google.protobuf.Empty) returns (google.protobuf.Empty);
+}
+
+message HostMessage {
+  // @format uuid
+  // @default "00000000-0000-0000-0000-000000000000"
+  string id = 1;
+  // @default true
+  bool is_enabled = 2;
+  // @format domain
+  string name = 3;
+  optional string description = 4;
+  string api_user = 5;
+  string api_password = 6;
+  string esl_host = 7;
+  string esl_port = 8;
+  string esl_password = 9;
+  // @default []
+  repeated common.OrderedNameValueMessage variables = 10;
+}
+

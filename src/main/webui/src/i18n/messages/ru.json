@@ -1,0 +1,266 @@
+{
+  "acl-action": {
+    "label": "Тип (действие)"
+  },
+  "acl-target": {
+    "label": "Цель"
+  },
+  "acls": {
+    "create": "Создать список доступа",
+    "edit": "Изменить список доступа",
+    "label": "Списки доступа"
+  },
+  "action": {
+    "add": "Создать",
+    "cancel": "Отмена",
+    "close": "Закрыть",
+    "load": "Загрузить",
+    "save": "Сохранить",
+    "search": "Поиск",
+    "sort": "Сортировка"
+  },
+  "actions": {
+    "label": "Действия"
+  },
+  "cc-manager": {
+    "label": "Менеджер КЦ"
+  },
+  "cc-operator-cold": {
+    "label": "Оператор КЦ Холодные"
+  },
+  "cc-operator-hot": {
+    "label": "Оператор КЦ Горячие"
+  },
+  "cc-operator-rejected": {
+    "label": "Оператор КЦ Отмены"
+  },
+  "cdr": {
+    "list": {
+      "label": "Список CDR"
+    }
+  },
+  "configuration": {
+    "label": "Конфигурация",
+    "tooltip": "Конфигурация"
+  },
+  "contexts": {
+    "create": "Создать контекст",
+    "edit": "Изменить контекст",
+    "label": "Контексты"
+  },
+  "cpa-admin": {
+    "label": "CPA Администратор"
+  },
+  "cpa-advertiser": {
+    "label": "Рекламодатель"
+  },
+  "cpa-webmaster": {
+    "label": "Вебмастер"
+  },
+  "crm-admin": {
+    "label": "CRM Администратор"
+  },
+  "crm-financier": {
+    "label": "CRM Финансист"
+  },
+  "dashboard": {
+    "label": "Панель управления",
+    "tooltip": "Основная страница"
+  },
+  "dictionaries": {
+    "dayOfWeek": {
+      "any": "Любой",
+      "fri": "Пятница",
+      "mon": "Понедельник",
+      "sat": "Суббота",
+      "sun": "Воскресенье",
+      "thu": "Четверг",
+      "tue": "Вторник",
+      "wed": "Среда"
+    },
+    "directions": {
+      "any": "Любой",
+      "inbound": "Входящший",
+      "local": "Локальный",
+      "outbound": "Исходящий"
+    }
+  },
+  "directory": {
+    "label": "Каталог"
+  },
+  "dlv-courier": {
+    "label": "Курьер Доставки"
+  },
+  "dlv-manager": {
+    "label": "Менеджер Доставки"
+  },
+  "domains": {
+    "create": "Создать домен",
+    "edit": "Изменить домен",
+    "label": "Домены"
+  },
+  "enums": {
+    "acl-type": {
+      "allow": "Разрешено",
+      "deny": "Запрещено"
+    },
+    "direction": {
+      "any": "Любой",
+      "inbound": "Входящий",
+      "local": "Локальный",
+      "outbound": "Исходящий"
+    }
+  },
+  "filters": {
+    "date-from": "Дата от",
+    "date-to": "Дата до",
+    "day": "День",
+    "label": "Фильтры",
+    "month": "Месяц",
+    "week": "Неделя"
+  },
+  "freeswitch": {
+    "status": {
+      "label": "Состояние FreeSWITCH"
+    }
+  },
+  "gateways": {
+    "create": "Создать шлюз",
+    "edit": "Изменить шлюз",
+    "label": "Шлюзы"
+  },
+  "groups": {
+    "create": "Создать группу",
+    "edit": "Изменить группу",
+    "label": "Группы"
+  },
+  "host": {
+    "apiPassword": "API пароль",
+    "apiUser": "API пользователь",
+    "cdrBaseUrl": "Базовый URL CDR записей",
+    "checkEsl": "Проверить ESL",
+    "eslHost": "ESL хост",
+    "eslPassword": "ESL пароль",
+    "eslPort": "ESL порт",
+    "sndBaseUrl": "Базовый URL звуковых файлов"
+  },
+  "hosts": {
+    "create": "Создать хост",
+    "edit": "Изменить хост",
+    "label": "Хосты"
+  },
+  "inbound-rules": {
+    "label": "Павила входящих"
+  },
+  "item": {
+    "billable": "Биллинг",
+    "callee": "Вызываемый",
+    "caller": "Вызывающий",
+    "context": "Контекст",
+    "description": "Описание",
+    "direction": "Направление",
+    "domain": "Домен",
+    "duration": "Продолжительность",
+    "external-id": "Внешний ID",
+    "groups": "Группы",
+    "host": "Хост",
+    "isEnabled": "Включено",
+    "name": "Название",
+    "partial-order-id": "# заказа",
+    "partial-phone-number": "Номер телефона (частичное совпадение)",
+    "partial-user": "Пользователь (часитчное совпадение)",
+    "phone-number": "Номер телефона",
+    "record": "Запись",
+    "timezone": "Таймзона",
+    "user": "Пользователь",
+    "value": "Значение"
+  },
+  "journals": {
+    "label": "Журналы"
+  },
+  "label": {
+    "actions": "Действия",
+    "begin": "Начало",
+    "dayOfWeek": "День недели",
+    "description": "Описание",
+    "enabled": "Включено",
+    "end": "Конец",
+    "exact": "Строгий",
+    "name": "Название",
+    "order-id": "# заказа",
+    "start-epoch": "Начало",
+    "timezone": "Таймзона"
+  },
+  "modules": {
+    "label": "Модули"
+  },
+  "no-results": "Нет результатов",
+  "no-roles": {
+    "label": "Нет ролей"
+  },
+  "outbound-rules": {
+    "label": "Правила исходящих"
+  },
+  "params": {
+    "label": "Параметры"
+  },
+  "pbx-admin": {
+    "label": "PBX Администратор"
+  },
+  "periods": {
+    "label": "Периоды"
+  },
+  "phone-number": {
+    "direction": "Направление",
+    "number": "Номер"
+  },
+  "phone-numbers": {
+    "create": "Создать телефонный номер",
+    "edit": "Изменить телефонный номер",
+    "label": "Телефонные номера",
+    "tooltip": "Телефонные номера"
+  },
+  "profile": {
+    "label": "Профиль"
+  },
+  "rules": {
+    "label": "Правила"
+  },
+  "schedule": {
+    "create": "Создать расписание",
+    "edit": "Изменить расписание"
+  },
+  "schedules": {
+    "label": "Расписания"
+  },
+  "signout": {
+    "label": "Выход"
+  },
+  "sip-profiles": {
+    "create": "Создать SIP профиль",
+    "edit": "Изменить SIP профиль",
+    "label": "SIP профили"
+  },
+  "status": {
+    "label": "Состояние"
+  },
+  "user": {
+    "password": "Пароль",
+    "username": "Имя пользователя"
+  },
+  "users": {
+    "candidates": "Кандидаты",
+    "create": "Создать пользователя",
+    "edit": "Изменить пользователя",
+    "label": "Пользователи"
+  },
+  "variables": {
+    "label": "Переменные"
+  },
+  "wh-manager": {
+    "label": "Менеджер Склада"
+  },
+  "wh-operator": {
+    "label": "Оператор Склада"
+  }
+}
